@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Claim Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚗 Car Insurance Claim Analyzer</h1>
+            <p>Upload a PDF claim file and view analyzed details instantly</p>
+        </header>
+
+        <main>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf" required>
+                <button type="submit">Upload & Analyze</button>
+            </form>
+
+            {% if info %}
+            <section class="output">
+                <h2>🔍 Extracted Information</h2>
+                <div class="card">
+                    {{ info | safe }}
+                </div>
+            </section>
+            {% endif %}
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Car Claim Reader. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
